@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import pluginScreenshot from '../assets/plugin-screenshot.png';
 
@@ -463,6 +464,14 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 // ── Landing page ──────────────────────────────────────────────────────────────
 export function LandingPage() {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <div className="min-h-screen" style={{
@@ -479,7 +488,7 @@ export function LandingPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '20px 40px',
+          padding: isMobile ? '16px 20px' : '20px 40px',
           borderBottom: `1px solid ${DIVIDER}`,
           position: 'sticky',
           top: 0,
@@ -493,7 +502,7 @@ export function LandingPage() {
           <span
             style={{
               fontFamily: "'DM Sans', sans-serif",
-              fontSize: 13,
+              fontSize: isMobile ? 12 : 13,
               fontWeight: 500,
               color: WHITE,
               letterSpacing: '-0.01em',
@@ -531,7 +540,7 @@ export function LandingPage() {
               color: WHITE,
               background: ACCENT,
               textDecoration: 'none',
-              padding: '7px 16px',
+              padding: isMobile ? '6px 12px' : '7px 16px',
               borderRadius: 2,
               letterSpacing: '0.01em',
               transition: 'opacity 0.15s',
@@ -547,12 +556,12 @@ export function LandingPage() {
       {/* Hero */}
       <section
         style={{
-          maxWidth: 1080,
+          maxWidth: isMobile ? '100%' : 1080,
           margin: '0 auto',
-          padding: '96px 40px 64px',
+          padding: isMobile ? '56px 20px 40px' : '96px 40px 64px',
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 64,
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+          gap: isMobile ? 32 : 64,
           alignItems: 'flex-start',
         }}
       >
@@ -591,7 +600,7 @@ export function LandingPage() {
             into production-ready variables, without the manual grind.
           </p>
 
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' as const, alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: 10, flexWrap: 'wrap' as const, alignItems: isMobile ? 'flex-start' : 'center' }}>
             <a
               href={FIGMA_URL}
               target="_blank"
@@ -654,7 +663,7 @@ export function LandingPage() {
 
 
         {/* Plugin screenshot + suite pills */}
-        <div>
+        <div style={{ display: isMobile ? 'none' : 'block' }}>
           <div
             style={{
               border: '1px solid rgba(255,255,255,0.1)',
@@ -689,7 +698,7 @@ export function LandingPage() {
       <div style={{ borderTop: `1px solid ${DIVIDER}` }} />
 
       {/* Plugin suite */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '56px 40px' }}>
+      <section style={{ maxWidth: isMobile ? '100%' : 1080, margin: '0 auto', padding: isMobile ? '40px 20px' : '56px 40px' }}>
         <SectionLabel>the suite</SectionLabel>
         <h2
           style={{
@@ -705,7 +714,7 @@ export function LandingPage() {
           three plugins,{' '}
           <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.4)' }}>one system.</em>
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 1, background: DIVIDER }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.5fr 1fr', gap: 1, background: DIVIDER }}>
           <FeaturedPluginCard
             name="Type Scale Generator"
             description="Generate typography scales as Figma text styles and variables. Supports responsive multi-mode output."
@@ -718,7 +727,7 @@ export function LandingPage() {
       <div style={{ borderTop: `1px solid ${DIVIDER}` }} />
 
       {/* How it works */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '56px 40px' }}>
+      <section style={{ maxWidth: isMobile ? '100%' : 1080, margin: '0 auto', padding: isMobile ? '40px 20px' : '56px 40px' }}>
         <SectionLabel>workflow</SectionLabel>
         <h2
           style={{
@@ -733,7 +742,7 @@ export function LandingPage() {
         >
           configure, preview, apply.
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 48 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 32 : 48 }}>
           <Step n="1" title="Configure" description="Set your base size, scale ratio and preview font. Adjust per-device breakpoints if you need responsive tokens." />
           <Step n="2" title="Preview" description="See every step live before committing, with accessibility flags, line-height values and semantic role hints." />
           <Step n="3" title="Apply" description="Push the entire scale to Figma as text styles and variables in one click. Ready for handoff." />
@@ -743,7 +752,7 @@ export function LandingPage() {
       <div style={{ borderTop: `1px solid ${DIVIDER}` }} />
 
       {/* Pricing */}
-      <section style={{ maxWidth: 1080, margin: '0 auto', padding: '56px 40px' }}>
+      <section style={{ maxWidth: isMobile ? '100%' : 1080, margin: '0 auto', padding: isMobile ? '40px 20px' : '56px 40px' }}>
         <SectionLabel>pricing</SectionLabel>
         <h2
           style={{
@@ -758,7 +767,7 @@ export function LandingPage() {
         >
           <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.4)' }}>start free,</em>{' '}go pro when ready.
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: DIVIDER }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 1, background: DIVIDER }}>
           <PricingCard
             tier="Free"
             price="€0"
@@ -784,12 +793,14 @@ export function LandingPage() {
       {/* Footer */}
       <footer
         style={{
-          maxWidth: 1080,
+          maxWidth: isMobile ? '100%' : 1080,
           margin: '0 auto',
-          padding: '32px 40px',
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
+          padding: isMobile ? '32px 20px' : '32px 40px',
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
           alignItems: 'center',
+          justifyContent: isMobile ? 'center' : 'space-between',
+          gap: isMobile ? 12 : undefined,
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
