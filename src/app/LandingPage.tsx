@@ -686,10 +686,10 @@ export function LandingPage() {
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: WHITE }}>Type Scale Generator</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '4px 10px', flexShrink: 0 }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Color Scale Generator, coming soon</span>
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Color Scale Generator · soon</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '4px 10px', flexShrink: 0 }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Surface Foundations, coming soon</span>
+              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Surface Foundations · soon</span>
             </div>
           </div>
         </div>
@@ -799,14 +799,14 @@ export function LandingPage() {
           maxWidth: isMobile ? '100%' : 1080,
           margin: '0 auto',
           padding: isMobile ? '32px 20px' : '32px 40px',
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
+          display: isMobile ? 'flex' : 'grid',
+          gridTemplateColumns: isMobile ? undefined : '1fr auto 1fr',
+          flexDirection: isMobile ? 'column' : undefined,
           alignItems: 'center',
-          justifyContent: isMobile ? 'center' : 'space-between',
           gap: isMobile ? 12 : undefined,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: isMobile ? 'center' : 'flex-start' }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: SOLID }} />
           <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.25)' }}>
             design foundations kit
@@ -815,7 +815,7 @@ export function LandingPage() {
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.2)', margin: 0, textAlign: 'center' }}>
           made with love by <span style={{ color: 'rgba(255,255,255,0.4)' }}>bed karma</span>
         </p>
-        <span style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.05em', textAlign: 'right' }}>
+        <span style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.05em', textAlign: isMobile ? 'center' : 'right', display: 'block' }}>
           v1.0
         </span>
       </footer>
