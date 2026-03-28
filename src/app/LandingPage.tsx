@@ -10,7 +10,7 @@ const ACCENT = 'linear-gradient(135deg, #7B6EE8, #9B3B6E)';   // filled buttons 
 const ACCENT_H = 'linear-gradient(90deg, #7B6EE8, #9B3B6E)';  // horizontal top lines
 const SOLID = '#7B6EE8';                                        // text, borders, badges
 const WHITE = '#FFFFFF';
-const DIM = 'rgba(255,255,255,0.5)';
+const DIM = 'rgba(255,255,255,0.65)';
 const DIMMER = 'rgba(255,255,255,0.12)';
 const DIVIDER = 'rgba(255,255,255,0.08)';
 
@@ -116,7 +116,7 @@ function PluginCard({
         style={{
           fontFamily: "'DM Sans', sans-serif",
           fontSize: 13,
-          color: isAvailable ? DIM : 'rgba(255,255,255,0.35)',
+          color: isAvailable ? DIM : 'rgba(255,255,255,0.55)',
           lineHeight: 1.65,
           margin: 0,
         }}
@@ -580,7 +580,7 @@ export function LandingPage() {
               }}
             >
               design foundations,{' '}
-              <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.4)' }}>
+              <em style={{ fontStyle: 'italic', color: SOLID, fontSize: '1.08em', letterSpacing: '-0.02em' }}>
                 in seconds.
               </em>
             </h1>
@@ -712,7 +712,7 @@ export function LandingPage() {
           }}
         >
           three plugins,{' '}
-          <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.4)' }}>one system.</em>
+          <em style={{ fontStyle: 'italic', color: SOLID, fontSize: '1.08em', letterSpacing: '-0.02em' }}>one system.</em>
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.5fr 1fr', gap: 1, background: DIVIDER }}>
           <FeaturedPluginCard
@@ -765,7 +765,10 @@ export function LandingPage() {
             marginBottom: 48,
           }}
         >
-          <em style={{ fontStyle: 'italic', color: 'rgba(255,255,255,0.4)' }}>start free,</em>{' '}go pro when ready.
+          start free,{' '}
+          <em style={{ fontStyle: 'italic', color: SOLID, fontSize: '1.08em', letterSpacing: '-0.02em' }}>
+            go pro when ready.
+          </em>
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(2, 1fr)', gap: 1, background: DIVIDER }}>
           <PricingCard
