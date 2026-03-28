@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '' 's/#7C6EA6/#7B6EE8/g; s/#9B89C4/#7B6EE8/g' \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/LandingPage.tsx\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/components/ControlPanel.tsx\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/components/SpecimenView.tsx\")",
+      "Bash(sed -i '' 's/linear-gradient\\(135deg, #7B6EE8, #7B6EE8\\)/linear-gradient\\(135deg, #7B6EE8, #9B3B6E\\)/g; s/linear-gradient\\(90deg, #7B6EE8, #7B6EE8\\)/linear-gradient\\(90deg, #7B6EE8, #9B3B6E\\)/g' \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/LandingPage.tsx\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/components/ControlPanel.tsx\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/components/SpecimenView.tsx\")",
+      "Bash(sed -i '' \"s/start free,{'' ''}/go pro when ready,{'' ''}/\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/LandingPage.tsx\")",
+      "Bash(sed -i '' \"s/<em style={{ fontStyle: ''italic'', color: ''rgba\\(255,255,255,0.3\\)'' }}>go pro when ready.<\\\\/em>/<em style={{ fontStyle: ''italic'', color: ''rgba\\(255,255,255,0.4\\)'' }}>start free.<\\\\/em>/\" \"/Users/andrea.cama/Documents/Type Scale Generator App/src/app/LandingPage.tsx\")"
+    ]
+  }
+}
