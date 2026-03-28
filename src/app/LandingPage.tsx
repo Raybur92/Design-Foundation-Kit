@@ -49,28 +49,31 @@ function PluginCard({
         borderRadius: 2,
       }}
     >
-      <span
-        style={{
-          position: 'absolute',
-          top: 16,
-          right: 20,
-          fontFamily: 'monospace',
-          fontSize: 11,
-          color: 'rgba(255,255,255,0.1)',
-          letterSpacing: '0.1em',
-        }}
-      >
-        {String(index).padStart(2, '0')}
-      </span>
+      {isAvailable && (
+        <span
+          style={{
+            position: 'absolute',
+            top: 16,
+            right: 20,
+            fontFamily: 'monospace',
+            fontSize: 11,
+            color: 'rgba(255,255,255,0.1)',
+            letterSpacing: '0.1em',
+          }}
+        >
+          {String(index).padStart(2, '0')}
+        </span>
+      )}
 
       <div className="flex items-start justify-between gap-3">
         <span
           style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
-            fontWeight: 500,
+            fontFamily: isAvailable ? "'DM Sans', sans-serif" : "'DM Serif Display', serif",
+            fontSize: isAvailable ? 13 : 18,
+            fontWeight: isAvailable ? 500 : 400,
             color: isAvailable ? WHITE : 'rgba(255,255,255,0.3)',
             letterSpacing: '-0.01em',
+            lineHeight: 1.2,
           }}
         >
           {name}
@@ -140,6 +143,24 @@ function PluginCard({
         >
           install →
         </a>
+      )}
+      {!isAvailable && (
+        <span
+          style={{
+            position: 'absolute',
+            bottom: 24,
+            right: 24,
+            fontFamily: 'monospace',
+            fontSize: 80,
+            fontWeight: 700,
+            color: 'rgba(255,255,255,0.04)',
+            lineHeight: 1,
+            pointerEvents: 'none',
+            userSelect: 'none',
+          }}
+        >
+          {String(index).padStart(2, '0')}
+        </span>
       )}
     </div>
   );
@@ -326,6 +347,7 @@ function PricingCard({
   tier,
   price,
   sub,
+  badge,
   features,
   cta,
   href,
@@ -334,6 +356,7 @@ function PricingCard({
   tier: string;
   price: string;
   sub?: string;
+  badge?: string;
   features: string[];
   cta: string;
   href: string;
@@ -364,18 +387,38 @@ function PricingCard({
       )}
 
       <div>
-        <p
-          style={{
-            fontFamily: 'monospace',
-            fontSize: 10,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase' as const,
-            color: highlight ? SOLID : 'rgba(255,255,255,0.3)',
-            marginBottom: 16,
-          }}
-        >
-          {tier}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <p
+            style={{
+              fontFamily: 'monospace',
+              fontSize: 10,
+              letterSpacing: '0.15em',
+              textTransform: 'uppercase' as const,
+              color: highlight ? SOLID : 'rgba(255,255,255,0.3)',
+              margin: 0,
+            }}
+          >
+            {tier}
+          </p>
+          {badge && (
+            <span
+              style={{
+                fontFamily: 'monospace',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase' as const,
+                color: SOLID,
+                border: `1px solid ${SOLID}`,
+                padding: '2px 7px',
+                borderRadius: 2,
+                flexShrink: 0,
+              }}
+            >
+              {badge}
+            </span>
+          )}
+        </div>
         <p
           style={{
             fontFamily: "'DM Serif Display', serif",
@@ -416,7 +459,7 @@ function PricingCard({
 
       <a
         href={href}
-        target={href === '#' ? undefined : '_blank'}
+        target={href === '#' || href.startsWith('mailto:') ? undefined : '_blank'}
         rel="noreferrer"
         style={{
           marginTop: 'auto',
@@ -532,7 +575,7 @@ export function LandingPage() {
             open app
           </button>
           <a
-            href={LEMONSQUEEZY_URL}
+            href="mailto:hello@bedkarma.com"
             style={{
               fontFamily: "'DM Sans', sans-serif",
               fontSize: 12,
@@ -548,7 +591,7 @@ export function LandingPage() {
             onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.85')}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
           >
-            get pro
+            notify me
           </a>
         </div>
       </nav>
@@ -622,7 +665,7 @@ export function LandingPage() {
               try free on figma
             </a>
             <a
-              href={LEMONSQUEEZY_URL}
+              href="mailto:hello@bedkarma.com"
               style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: 13,
@@ -644,7 +687,7 @@ export function LandingPage() {
                 e.currentTarget.style.color = DIM;
               }}
             >
-              get pro · €9/mo
+              notify me
             </a>
           </div>
 
@@ -696,6 +739,21 @@ export function LandingPage() {
       </section>
 
       <div style={{ borderTop: `1px solid ${DIVIDER}` }} />
+
+      {/* Early access notice */}
+      <div
+        style={{
+          background: 'rgba(123,110,232,0.08)',
+          borderTop: '1px solid rgba(123,110,232,0.2)',
+          borderBottom: '1px solid rgba(123,110,232,0.2)',
+          padding: isMobile ? '12px 20px' : '12px 40px',
+          textAlign: 'center',
+        }}
+      >
+        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>
+          All features are <span style={{ color: SOLID, fontWeight: 600 }}>free</span> during early access. When Pro launches, existing users will be notified before anything changes.
+        </p>
+      </div>
 
       {/* Plugin suite */}
       <section style={{ maxWidth: isMobile ? '100%' : 1080, margin: '0 auto', padding: isMobile ? '40px 20px' : '56px 40px' }}>
@@ -775,17 +833,17 @@ export function LandingPage() {
             tier="Free"
             price="€0"
             sub="forever"
-            features={['Core scale generation', 'Text styles export', 'Single-mode variables', 'Style guide preview', 'CSS / SCSS / JSON export']}
+            features={['Core scale generation', 'Text styles export', 'Single-mode variables', 'Style guide preview', 'Token export (CSS, SCSS, JSON)']}
             cta="try on figma"
             href={FIGMA_URL}
           />
           <PricingCard
             tier="Pro"
-            price="€9"
-            sub="per month · or €79/year"
-            features={['Everything in free', 'Multi-device variables', 'Responsive variable binding', 'Per-step overrides', 'All future plugins']}
-            cta="get pro"
-            href={LEMONSQUEEZY_URL}
+            price="Coming soon"
+            badge="early access · free now"
+            features={['Everything in free', 'Multi-device variables (Desktop + Mobile)', 'Automatic variable binding to text styles', 'Per-step line height, letter spacing and font overrides', 'Dual style guide (Desktop + Mobile)']}
+            cta="notify me when pro launches"
+            href="mailto:hello@bedkarma.com"
             highlight
           />
         </div>
