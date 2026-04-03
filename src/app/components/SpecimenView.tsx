@@ -22,6 +22,8 @@ const DIMMEST = 'rgba(255,255,255,0.12)';
 const ACCENT = 'linear-gradient(135deg, #7B6EE8, #9B3B6E)';
 const SOLID = '#7B6EE8';
 const WHITE = '#FFFFFF';
+const MONO = "'IBM Plex Mono', monospace";
+const SANS = "'IBM Plex Sans', sans-serif";
 
 // ── Scale Table ──────────────────────────────────────────────────────────────
 
@@ -34,11 +36,11 @@ interface ScaleTableProps {
 
 function ScaleTable({ steps, font, compact = false, previewText }: ScaleTableProps) {
   const thStyle: React.CSSProperties = {
-    fontFamily: 'monospace',
-    fontSize: 10,
-    color: DIM,
+    fontFamily: MONO,
+    fontSize: 10.1,
+    color: 'rgba(255,255,255,0.5)',
     textTransform: 'uppercase',
-    letterSpacing: '0.12em',
+    letterSpacing: '0.01em',
     fontWeight: 400,
     textAlign: 'left',
     paddingBottom: 10,
@@ -81,7 +83,7 @@ function ScaleTable({ steps, font, compact = false, previewText }: ScaleTablePro
                   ) : (
                     <div style={{ width: 6, flexShrink: 0 }} />
                   )}
-                  <span style={{ fontFamily: 'monospace', fontSize: 12, color: step.isBase ? WHITE : MID }}>
+                  <span style={{ fontFamily: MONO, fontSize: 13.5, letterSpacing: '0.01em', color: step.isBase ? WHITE : MID }}>
                     {step.name}
                   </span>
                 </div>
@@ -89,7 +91,7 @@ function ScaleTable({ steps, font, compact = false, previewText }: ScaleTablePro
 
               {/* Size value */}
               <td style={{ padding: '10px 16px 10px 0', verticalAlign: 'middle' }}>
-                <span style={{ fontFamily: 'monospace', fontSize: 12, color: step.isBase ? WHITE : MID }}>
+                <span style={{ fontFamily: MONO, fontSize: 13.5, letterSpacing: '0.01em', color: step.isBase ? WHITE : MID }}>
                   {step.formattedValue}
                 </span>
               </td>
@@ -97,14 +99,14 @@ function ScaleTable({ steps, font, compact = false, previewText }: ScaleTablePro
               {/* Semantic role */}
               {!compact && (
                 <td style={{ padding: '10px 16px 10px 0', verticalAlign: 'middle' }}>
-                  <span style={{ fontSize: 11, color: MID }}>{step.semanticRole}</span>
+                  <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.5)' }}>{step.semanticRole}</span>
                 </td>
               )}
 
               {/* Line height */}
               {!compact && (
                 <td style={{ padding: '10px 16px 10px 0', verticalAlign: 'middle' }}>
-                  <span style={{ fontFamily: 'monospace', fontSize: 12, color: MID }}>{step.lineHeight}</span>
+                  <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.5)' }}>{step.lineHeight}</span>
                 </td>
               )}
 
@@ -162,7 +164,6 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
   const desktopScale = generateScale(settings.desktopBase, settings.ratio, settings.stepsUp, settings.stepsDown, settings.unit);
 
   const activeScale = activeTab === 'mobile' ? mobileScale : desktopScale;
-
   const activeBase = activeTab === 'mobile' ? settings.mobileBase : settings.desktopBase;
 
   const getExportText = () => {
@@ -211,8 +212,10 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
             onClick={() => setActiveTab(tab.id)}
             style={{
               padding: '14px 12px',
-              fontSize: 12,
+              fontFamily: SANS,
+              fontSize: 13.5,
               fontWeight: 500,
+              letterSpacing: '0.01em',
               cursor: 'pointer',
               background: 'none',
               border: 'none',
@@ -230,10 +233,10 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
         {/* Ratio + steps badges */}
         <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8 }}>
           <div style={{ padding: '3px 8px', background: 'rgba(255,255,255,0.05)', border: `1px solid ${BORDER}`, borderRadius: 3 }}>
-            <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM }}>×{settings.ratio}</span>
+            <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>×{settings.ratio}</span>
           </div>
           <div style={{ padding: '3px 8px', background: 'rgba(255,255,255,0.05)', border: `1px solid ${BORDER}`, borderRadius: 3 }}>
-            <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM }}>{settings.stepsDown + 1 + settings.stepsUp} steps</span>
+            <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>{settings.stepsDown + 1 + settings.stepsUp} steps</span>
           </div>
         </div>
       </div>
@@ -254,10 +257,10 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-                  <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM, textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                  <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM, textTransform: 'uppercase' }}>
                     {label}
                   </span>
-                  <span style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(255,255,255,0.2)' }}>{base}px base</span>
+                  <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.2)' }}>{base}px base</span>
                 </div>
                 <ScaleTable steps={scale} font={settings.font} compact previewText={settings.previewText ?? ''} />
               </div>
@@ -284,15 +287,15 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
                 <React.Fragment key={label}>
                   {i > 0 && <div style={{ width: 1, height: 12, background: BORDER }} />}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM }}>{label}</span>
-                    <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM }}>{value}</span>
+                    <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>{label}</span>
+                    <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>{value}</span>
                   </div>
                 </React.Fragment>
               ))}
               <div style={{ width: 1, height: 12, background: BORDER }} />
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
-                <span style={{ fontFamily: 'monospace', fontSize: 10, color: DIM }}>= base step</span>
+                <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>= base step</span>
               </div>
             </div>
 
@@ -318,10 +321,11 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
               value={exportFormat}
               onChange={(e) => setExportFormat(e.target.value as ExportFormat)}
               style={{
+                fontFamily: SANS,
+                fontSize: 13.5,
                 background: 'rgba(255,255,255,0.05)',
                 border: `1px solid ${DIMMEST}`,
                 borderRadius: 4,
-                fontSize: 12,
                 color: WHITE,
                 padding: '6px 28px 6px 10px',
                 outline: 'none',
@@ -348,8 +352,10 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
               alignItems: 'center',
               gap: 6,
               padding: '6px 12px',
-              fontSize: 12,
+              fontFamily: SANS,
+              fontSize: 13.5,
               fontWeight: 500,
+              letterSpacing: '0.01em',
               cursor: 'pointer',
               border: 'none',
               borderRadius: 4,
@@ -388,13 +394,13 @@ export function SpecimenView({ settings }: SpecimenViewProps) {
               overflow: 'hidden',
             }}
           >
-            <code style={{ fontFamily: 'monospace', fontSize: 10, color: DIM, whiteSpace: 'nowrap', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <code style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM, whiteSpace: 'nowrap', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {exportPreview}{getExportText().split('\n').length > 2 ? ' …' : ''}
             </code>
           </div>
 
           {activeTab === 'compare' && (
-            <div style={{ flexShrink: 0, fontFamily: 'monospace', fontSize: 10, color: DIM }}>
+            <div style={{ flexShrink: 0, fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM }}>
               Exports all 3 devices
             </div>
           )}

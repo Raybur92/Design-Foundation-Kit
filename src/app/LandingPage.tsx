@@ -13,6 +13,9 @@ const WHITE = '#FFFFFF';
 const DIM = 'rgba(255,255,255,0.65)';
 const DIMMER = 'rgba(255,255,255,0.12)';
 const DIVIDER = 'rgba(255,255,255,0.08)';
+const MONO = "'IBM Plex Mono', monospace";
+const SANS = "'IBM Plex Sans', sans-serif";
+const SERIF = "'DM Serif Display', serif";
 
 
 // ── Token line ────────────────────────────────────────────────────────────────
@@ -55,10 +58,10 @@ function PluginCard({
             position: 'absolute',
             top: 16,
             right: 20,
-            fontFamily: 'monospace',
-            fontSize: 11,
+            fontFamily: MONO,
+            fontSize: 10.1,
             color: 'rgba(255,255,255,0.1)',
-            letterSpacing: '0.1em',
+            letterSpacing: '0.01em',
           }}
         >
           {String(index).padStart(2, '0')}
@@ -68,12 +71,12 @@ function PluginCard({
       <div className="flex items-start justify-between gap-3">
         <span
           style={{
-            fontFamily: isAvailable ? "'DM Sans', sans-serif" : "'DM Serif Display', serif",
-            fontSize: isAvailable ? 13 : 18,
-            fontWeight: isAvailable ? 500 : 400,
-            color: isAvailable ? WHITE : 'rgba(255,255,255,0.3)',
+            fontFamily: SERIF,
+            fontSize: 24,
+            fontWeight: 400,
+            color: isAvailable ? WHITE : 'rgba(255,255,255,0.75)',
             letterSpacing: '-0.01em',
-            lineHeight: 1.2,
+            lineHeight: 1.3,
           }}
         >
           {name}
@@ -81,10 +84,10 @@ function PluginCard({
         {isAvailable ? (
           <span
             style={{
-              fontFamily: 'monospace',
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: '0.15em',
+              fontFamily: MONO,
+              fontSize: 10.1,
+              fontWeight: 400,
+              letterSpacing: '0.01em',
               textTransform: 'uppercase' as const,
               color: SOLID,
               border: `1px solid ${SOLID}`,
@@ -98,13 +101,13 @@ function PluginCard({
         ) : (
           <span
             style={{
-              fontFamily: 'monospace',
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: '0.15em',
+              fontFamily: MONO,
+              fontSize: 10.1,
+              fontWeight: 400,
+              letterSpacing: '0.01em',
               textTransform: 'uppercase' as const,
-              color: 'rgba(255,255,255,0.2)',
-              border: '1px solid rgba(255,255,255,0.1)',
+              color: 'rgba(255,255,255,0.6)',
+              border: '1px solid rgba(255,255,255,0.3)',
               padding: '2px 7px',
               borderRadius: 2,
               flexShrink: 0,
@@ -117,10 +120,10 @@ function PluginCard({
 
       <p
         style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 13,
-          color: isAvailable ? DIM : 'rgba(255,255,255,0.55)',
-          lineHeight: 1.65,
+          fontFamily: SANS,
+          fontSize: 18,
+          color: isAvailable ? DIM : 'rgba(255,255,255,0.6)',
+          lineHeight: 1.4,
           margin: 0,
         }}
       >
@@ -133,9 +136,9 @@ function PluginCard({
           target="_blank"
           rel="noreferrer"
           style={{
-            fontFamily: 'monospace',
-            fontSize: 11,
-            letterSpacing: '0.08em',
+            fontFamily: MONO,
+            fontSize: 13.5,
+            letterSpacing: '0.01em',
             color: SOLID,
             textDecoration: 'none',
             marginTop: 4,
@@ -199,12 +202,12 @@ function FeaturedPluginCard({
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
           <p
             style={{
-              fontFamily: "'DM Serif Display', serif",
-              fontSize: 36,
+              fontFamily: SERIF,
+              fontSize: 32,
               fontWeight: 400,
               color: WHITE,
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.3,
+              letterSpacing: '-0.01em',
               margin: 0,
             }}
           >
@@ -212,10 +215,10 @@ function FeaturedPluginCard({
           </p>
           <span
             style={{
-              fontFamily: 'monospace',
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: '0.15em',
+              fontFamily: MONO,
+              fontSize: 10.1,
+              fontWeight: 400,
+              letterSpacing: '0.01em',
               textTransform: 'uppercase' as const,
               color: SOLID,
               border: `1px solid ${SOLID}`,
@@ -233,16 +236,16 @@ function FeaturedPluginCard({
             <span key={tag} style={{ display: 'flex', alignItems: 'center' }}>
               <span
                 style={{
-                  fontFamily: 'monospace',
-                  fontSize: 10,
-                  letterSpacing: '0.08em',
+                  fontFamily: MONO,
+                  fontSize: 10.1,
+                  letterSpacing: '0.01em',
                   color: 'rgba(255,255,255,0.25)',
                 }}
               >
                 {tag}
               </span>
               {i < 2 && (
-                <span style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(255,255,255,0.1)', margin: '0 8px' }}>
+                <span style={{ fontFamily: MONO, fontSize: 10.1, color: 'rgba(255,255,255,0.1)', margin: '0 8px' }}>
                   /
                 </span>
               )}
@@ -253,10 +256,10 @@ function FeaturedPluginCard({
 
       <p
         style={{
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 13,
+          fontFamily: SANS,
+          fontSize: 18,
           color: DIM,
-          lineHeight: 1.65,
+          lineHeight: 1.4,
           margin: 0,
         }}
       >
@@ -268,9 +271,9 @@ function FeaturedPluginCard({
         target="_blank"
         rel="noreferrer"
         style={{
-          fontFamily: 'monospace',
-          fontSize: 11,
-          letterSpacing: '0.08em',
+          fontFamily: MONO,
+          fontSize: 13.5,
+          letterSpacing: '0.01em',
           color: SOLID,
           textDecoration: 'none',
           marginTop: 'auto',
@@ -305,10 +308,10 @@ function Step({ n, title, description }: { n: string; title: string; description
     <div className="flex flex-col gap-4">
       <div
         style={{
-          fontFamily: 'monospace',
-          fontSize: 11,
+          fontFamily: MONO,
+          fontSize: 13.5,
           color: SOLID,
-          letterSpacing: '0.1em',
+          letterSpacing: '0.01em',
         }}
       >
         {n.padStart(2, '0')} /
@@ -316,11 +319,12 @@ function Step({ n, title, description }: { n: string; title: string; description
       <div>
         <p
           style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: 20,
+            fontFamily: SERIF,
+            fontSize: 32,
             fontWeight: 400,
             color: WHITE,
             marginBottom: 10,
+            lineHeight: 1.3,
             letterSpacing: '-0.01em',
           }}
         >
@@ -328,10 +332,10 @@ function Step({ n, title, description }: { n: string; title: string; description
         </p>
         <p
           style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: 13,
+            fontFamily: SANS,
+            fontSize: 18,
             color: DIM,
-            lineHeight: 1.7,
+            lineHeight: 1.4,
             margin: 0,
           }}
         >
@@ -390,12 +394,12 @@ function PricingCard({
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <p
             style={{
-              fontFamily: 'monospace',
-              fontSize: 10,
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase' as const,
+              fontFamily: SERIF,
+              fontSize: 24,
+              fontWeight: 400,
               color: highlight ? SOLID : 'rgba(255,255,255,0.3)',
               margin: 0,
+              lineHeight: 1,
             }}
           >
             {tier}
@@ -403,10 +407,10 @@ function PricingCard({
           {badge && (
             <span
               style={{
-                fontFamily: 'monospace',
-                fontSize: 9,
-                fontWeight: 700,
-                letterSpacing: '0.15em',
+                fontFamily: MONO,
+                fontSize: 10.1,
+                fontWeight: 400,
+                letterSpacing: '0.01em',
                 textTransform: 'uppercase' as const,
                 color: SOLID,
                 border: `1px solid ${SOLID}`,
@@ -419,24 +423,26 @@ function PricingCard({
             </span>
           )}
         </div>
-        <p
-          style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: 32,
-            fontWeight: 400,
-            color: WHITE,
-            letterSpacing: '-0.02em',
-            lineHeight: 1,
-            marginBottom: sub ? 6 : 0,
-          }}
-        >
-          {price}
-        </p>
-        {sub && (
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: DIM, margin: 0 }}>
-            {sub}
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+          <p
+            style={{
+              fontFamily: SERIF,
+              fontSize: 42.6,
+              fontWeight: 400,
+              color: WHITE,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2,
+              margin: 0,
+            }}
+          >
+            {price}
           </p>
-        )}
+          {sub && (
+            <span style={{ fontFamily: SANS, fontSize: 14, color: 'rgba(255,255,255,0.45)', letterSpacing: '0.01em' }}>
+              {sub}
+            </span>
+          )}
+        </div>
       </div>
 
       <ul className="flex flex-col gap-3" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
@@ -445,13 +451,13 @@ function PricingCard({
             key={f}
             className="flex items-start gap-3"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 13,
+              fontFamily: SANS,
+              fontSize: 18,
               color: DIM,
-              lineHeight: 1.5,
+              lineHeight: 1.4,
             }}
           >
-            <span style={{ color: highlight ? SOLID : 'rgba(255,255,255,0.4)', fontSize: 13, fontWeight: 600, marginTop: 1, flexShrink: 0 }}>✓</span>
+            <span style={{ color: highlight ? SOLID : 'rgba(255,255,255,0.4)', fontSize: 18, fontWeight: 600, marginTop: 1, flexShrink: 0 }}>✓</span>
             {f}
           </li>
         ))}
@@ -463,16 +469,16 @@ function PricingCard({
         rel="noreferrer"
         style={{
           marginTop: 'auto',
-          fontFamily: "'DM Sans', sans-serif",
-          fontSize: 13,
-          fontWeight: 600,
+          fontFamily: SANS,
+          fontSize: 13.5,
+          fontWeight: 500,
           textAlign: 'center' as const,
           padding: '11px 24px',
           borderRadius: 2,
           textDecoration: 'none',
           background: highlight ? ACCENT : 'transparent',
-          color: highlight ? WHITE : DIM,
-          border: highlight ? 'none' : `1px solid ${DIMMER}`,
+          color: highlight ? WHITE : 'rgba(255,255,255,0.8)',
+          border: highlight ? 'none' : '1px solid rgba(255,255,255,0.3)',
           letterSpacing: '0.01em',
           transition: 'opacity 0.15s',
         }}
@@ -490,12 +496,11 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
       style={{
-        fontFamily: 'monospace',
-        fontSize: 10,
-        letterSpacing: '0.15em',
+        fontFamily: MONO,
+        fontSize: 10.1,
+        letterSpacing: '0.01em',
         textTransform: 'uppercase' as const,
-        color: 'rgba(255,255,255,0.25)',
-        marginBottom: 16,
+        color: 'rgba(255,255,255,0.6)',
         margin: '0 0 16px',
       }}
     >
@@ -544,11 +549,11 @@ export function LandingPage() {
           <div style={{ width: 7, height: 7, borderRadius: '50%', background: SOLID }} />
           <span
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: isMobile ? 12 : 13,
+              fontFamily: SANS,
+              fontSize: 13.5,
               fontWeight: 500,
               color: WHITE,
-              letterSpacing: '-0.01em',
+              letterSpacing: '0.01em',
             }}
           >
             design foundations kit
@@ -559,8 +564,8 @@ export function LandingPage() {
           <button
             onClick={() => navigate('/app')}
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12,
+              fontFamily: SANS,
+              fontSize: 13.5,
               fontWeight: 500,
               color: DIM,
               background: 'transparent',
@@ -577,9 +582,9 @@ export function LandingPage() {
           <a
             href="mailto:hello@bedkarma.com"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 12,
-              fontWeight: 600,
+              fontFamily: SANS,
+              fontSize: 13.5,
+              fontWeight: 500,
               color: WHITE,
               background: ACCENT,
               textDecoration: 'none',
@@ -605,7 +610,7 @@ export function LandingPage() {
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
           gap: isMobile ? 32 : 64,
-          alignItems: 'flex-start',
+          alignItems: 'center',
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
@@ -613,11 +618,11 @@ export function LandingPage() {
             <SectionLabel>figma plugin suite by bed karma</SectionLabel>
             <h1
               style={{
-                fontFamily: "'DM Serif Display', serif",
-                fontSize: 'clamp(2.8rem, 5vw, 4rem)',
+                fontFamily: SERIF,
+                fontSize: 'clamp(3.2rem, 5.5vw, 4.8rem)',
                 fontWeight: 400,
-                lineHeight: 1.05,
-                letterSpacing: '-0.02em',
+                lineHeight: 1.1,
+                letterSpacing: '-0.03em',
                 color: WHITE,
                 margin: 0,
               }}
@@ -631,10 +636,10 @@ export function LandingPage() {
 
           <p
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: 15,
+              fontFamily: SANS,
+              fontSize: 18,
               color: DIM,
-              lineHeight: 1.7,
+              lineHeight: 1.4,
               maxWidth: '40ch',
               margin: 0,
             }}
@@ -649,9 +654,9 @@ export function LandingPage() {
               target="_blank"
               rel="noreferrer"
               style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 13,
-                fontWeight: 600,
+                fontFamily: SANS,
+                fontSize: 13.5,
+                fontWeight: 500,
                 color: WHITE,
                 background: ACCENT,
                 textDecoration: 'none',
@@ -667,8 +672,8 @@ export function LandingPage() {
             <a
               href="mailto:hello@bedkarma.com"
               style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: 13,
+                fontFamily: SANS,
+                fontSize: 13.5,
                 fontWeight: 500,
                 color: DIM,
                 background: 'transparent',
@@ -693,10 +698,10 @@ export function LandingPage() {
 
           <p
             style={{
-              fontFamily: 'monospace',
-              fontSize: 10,
+              fontFamily: MONO,
+              fontSize: 10.1,
               color: 'rgba(255,255,255,0.35)',
-              letterSpacing: '0.05em',
+              letterSpacing: '0.01em',
               margin: 0,
             }}
           >
@@ -722,19 +727,6 @@ export function LandingPage() {
             />
           </div>
 
-          {/* Suite pills */}
-          <div style={{ display: 'flex', gap: 8, marginTop: 12, flexWrap: 'nowrap' as const }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'rgba(123,110,232,0.12)', border: '1px solid rgba(123,110,232,0.3)', borderRadius: 100, padding: '4px 10px', flexShrink: 0 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#7B6EE8', flexShrink: 0 }} />
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: WHITE }}>Type Scale Generator</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '4px 10px', flexShrink: 0 }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Color Scale Generator · soon</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', background: 'transparent', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 100, padding: '4px 10px', flexShrink: 0 }}>
-              <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, color: 'rgba(255,255,255,0.3)' }}>Surface Foundations · soon</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -750,7 +742,7 @@ export function LandingPage() {
           textAlign: 'center',
         }}
       >
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>
+        <p style={{ fontFamily: SANS, fontSize: 13.5, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.6)', margin: 0 }}>
           All features are <span style={{ color: SOLID, fontWeight: 600 }}>free</span> during early access. When Pro launches, existing users will be notified before anything changes.
         </p>
       </div>
@@ -760,11 +752,11 @@ export function LandingPage() {
         <SectionLabel>the suite</SectionLabel>
         <h2
           style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+            fontFamily: SERIF,
+            fontSize: 42.6,
             fontWeight: 400,
             color: WHITE,
-            lineHeight: 1.1,
+            lineHeight: 1.2,
             letterSpacing: '-0.02em',
             marginBottom: 48,
           }}
@@ -777,8 +769,8 @@ export function LandingPage() {
             name="Type Scale Generator"
             description="Generate typography scales as Figma text styles and variables. Supports responsive multi-mode output."
           />
-          <PluginCard index={2} name="Color Scale Generator" description="Build perceptually uniform color ramps from a single seed color, with automatic light and dark mode variables." status="soon" />
-          <PluginCard index={3} name="Surface Foundations" description="Define spacing, radius and elevation tokens in one place. The structural layer of any robust design system." status="soon" />
+          <PluginCard index={2} name="Color Scale Generator" description="Perceptually uniform color ramps." status="soon" />
+          <PluginCard index={3} name="Surface Foundations" description="Spacing, radius and elevation logic." status="soon" />
         </div>
       </section>
 
@@ -789,11 +781,11 @@ export function LandingPage() {
         <SectionLabel>workflow</SectionLabel>
         <h2
           style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+            fontFamily: SERIF,
+            fontSize: 42.6,
             fontWeight: 400,
             color: WHITE,
-            lineHeight: 1.1,
+            lineHeight: 1.2,
             letterSpacing: '-0.02em',
             marginBottom: 56,
           }}
@@ -814,11 +806,11 @@ export function LandingPage() {
         <SectionLabel>pricing</SectionLabel>
         <h2
           style={{
-            fontFamily: "'DM Serif Display', serif",
-            fontSize: 'clamp(1.8rem, 3vw, 2.6rem)',
+            fontFamily: SERIF,
+            fontSize: 42.6,
             fontWeight: 400,
             color: WHITE,
-            lineHeight: 1.1,
+            lineHeight: 1.2,
             letterSpacing: '-0.02em',
             marginBottom: 48,
           }}
@@ -866,14 +858,14 @@ export function LandingPage() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: isMobile ? 'center' : 'flex-start' }}>
           <div style={{ width: 6, height: 6, borderRadius: '50%', background: SOLID }} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.25)' }}>
+          <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.25)' }}>
             design foundations kit
           </span>
         </div>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: 'rgba(255,255,255,0.2)', margin: 0, textAlign: 'center' }}>
-          made with love by <span style={{ color: 'rgba(255,255,255,0.4)' }}>bed karma</span>
+        <p style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.2)', margin: 0, textAlign: 'center' }}>
+          made with love by <a href="https://www.linkedin.com/in/andrea-cama/" target="_blank" rel="noreferrer" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>bed karma</a>
         </p>
-        <span style={{ fontFamily: 'monospace', fontSize: 10, color: 'rgba(255,255,255,0.15)', letterSpacing: '0.05em', textAlign: isMobile ? 'center' : 'right', display: 'block' }}>
+        <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.15)', textAlign: isMobile ? 'center' : 'right', display: 'block' }}>
           v1.0
         </span>
       </footer>

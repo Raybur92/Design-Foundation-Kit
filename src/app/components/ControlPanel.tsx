@@ -8,21 +8,22 @@ interface ControlPanelProps {
 
 const BORDER = 'rgba(255,255,255,0.08)';
 const DIM = 'rgba(255,255,255,0.35)';
-const DIMMER = 'rgba(255,255,255,0.2)';
 const DIMMEST = 'rgba(255,255,255,0.12)';
 const ACCENT = 'linear-gradient(135deg, #7B6EE8, #9B3B6E)';
 const SOLID = '#7B6EE8';
 const WHITE = '#FFFFFF';
+const MONO = "'IBM Plex Mono', monospace";
+const SANS = "'IBM Plex Sans', sans-serif";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div
       style={{
-        fontFamily: 'monospace',
-        fontSize: 10,
-        color: DIM,
+        fontFamily: MONO,
+        fontSize: 10.1,
+        color: 'rgba(255,255,255,0.6)',
         textTransform: 'uppercase',
-        letterSpacing: '0.15em',
+        letterSpacing: '0.01em',
         marginBottom: 10,
       }}
     >
@@ -44,7 +45,8 @@ const inputStyle: React.CSSProperties = {
   background: 'rgba(255,255,255,0.05)',
   border: `1px solid ${DIMMEST}`,
   borderRadius: 4,
-  fontSize: 12,
+  fontFamily: SANS,
+  fontSize: 13.5,
   color: WHITE,
   padding: '6px 10px',
   outline: 'none',
@@ -56,7 +58,8 @@ const selectStyle: React.CSSProperties = {
   background: 'rgba(255,255,255,0.05)',
   border: `1px solid ${DIMMEST}`,
   borderRadius: 4,
-  fontSize: 12,
+  fontFamily: SANS,
+  fontSize: 13.5,
   color: WHITE,
   padding: '6px 10px',
   outline: 'none',
@@ -86,16 +89,16 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M7 2L3 6l4 4" stroke={DIM} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span style={{ fontSize: 10, color: DIM, fontFamily: 'monospace', letterSpacing: '0.05em' }}>back to home</span>
+          <span style={{ fontFamily: MONO, fontSize: 10.1, color: DIM, letterSpacing: '0.01em' }}>back to home</span>
         </a>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 3 }}>
           <div style={{ width: 16, height: 16, background: ACCENT, borderRadius: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <span style={{ fontSize: 8, color: WHITE, fontWeight: 700, lineHeight: 1 }}>T</span>
           </div>
-          <span style={{ fontSize: 13, fontWeight: 600, color: WHITE, letterSpacing: '-0.01em' }}>Type Scale</span>
+          <span style={{ fontFamily: SANS, fontSize: 24, fontWeight: 500, color: WHITE, letterSpacing: '0' }}>Type Scale</span>
         </div>
-        <p style={{ fontSize: 11, color: DIM, margin: 0, paddingLeft: 24 }}>Generator & Token Exporter</p>
+        <p style={{ fontFamily: MONO, fontSize: 10.1, color: 'rgba(255,255,255,0.5)', margin: 0, paddingLeft: 24, letterSpacing: '0.01em' }}>Generator & Token Exporter</p>
       </div>
 
       {/* Base Font Size */}
@@ -112,12 +115,12 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
             style={{ flex: 1, height: 4, cursor: 'pointer', accentColor: SOLID }}
           />
           <div style={{ width: 52, border: `1px solid ${DIMMEST}`, borderRadius: 4, padding: '4px 8px', textAlign: 'center', background: 'rgba(255,255,255,0.05)' }}>
-            <span style={{ fontSize: 12, fontFamily: 'monospace', color: WHITE }}>{settings.baseSize}px</span>
+            <span style={{ fontFamily: MONO, fontSize: 13.5, letterSpacing: '0.01em', color: WHITE }}>{settings.baseSize}px</span>
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
-          <span style={{ fontSize: 10, color: DIMMEST, fontFamily: 'monospace' }}>12px</span>
-          <span style={{ fontSize: 10, color: DIMMEST, fontFamily: 'monospace' }}>24px</span>
+          <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIMMEST }}>12px</span>
+          <span style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIMMEST }}>24px</span>
         </div>
       </Section>
 
@@ -147,7 +150,7 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
         <SectionLabel>Steps</SectionLabel>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
           <div>
-            <div style={{ fontSize: 10, color: DIM, marginBottom: 6, fontFamily: 'monospace' }}>Steps up</div>
+            <div style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM, marginBottom: 6 }}>Steps up</div>
             <input
               type="number"
               min={1}
@@ -158,7 +161,7 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
             />
           </div>
           <div>
-            <div style={{ fontSize: 10, color: DIM, marginBottom: 6, fontFamily: 'monospace' }}>Steps down</div>
+            <div style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM, marginBottom: 6 }}>Steps down</div>
             <input
               type="number"
               min={0}
@@ -182,8 +185,10 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
               style={{
                 flex: 1,
                 padding: '7px 0',
-                fontSize: 12,
-                fontWeight: 500,
+                fontFamily: MONO,
+                fontSize: 13.5,
+                fontWeight: 400,
+                letterSpacing: '0.01em',
                 cursor: 'pointer',
                 border: 'none',
                 background: settings.unit === u ? SOLID : 'transparent',
@@ -267,7 +272,8 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
               style={{
                 padding: '6px 8px',
                 borderRadius: 3,
-                fontSize: 10,
+                fontFamily: SANS,
+                fontSize: 10.1,
                 textAlign: 'left',
                 cursor: 'pointer',
                 border: 'none',
@@ -292,7 +298,7 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
             { key: 'desktopBase' as keyof Settings, label: 'Desktop' },
           ].map(({ key, label }) => (
             <div key={key}>
-              <div style={{ fontSize: 10, color: DIM, marginBottom: 6, fontFamily: 'monospace' }}>{label}</div>
+              <div style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIM, marginBottom: 6 }}>{label}</div>
               <div style={{ position: 'relative' }}>
                 <input
                   type="number"
@@ -302,7 +308,7 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
                   onChange={(e) => set({ [key]: Number(e.target.value) } as Partial<Settings>)}
                   style={{ ...inputStyle, textAlign: 'center', paddingRight: 20, colorScheme: 'dark' }}
                 />
-                <span style={{ pointerEvents: 'none', position: 'absolute', right: 7, top: '50%', transform: 'translateY(-50%)', fontSize: 10, color: DIMMEST, fontFamily: 'monospace' }}>
+                <span style={{ pointerEvents: 'none', position: 'absolute', right: 7, top: '50%', transform: 'translateY(-50%)', fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: DIMMEST }}>
                   px
                 </span>
               </div>
@@ -313,7 +319,7 @@ export function ControlPanel({ settings, onChange }: ControlPanelProps) {
 
       {/* Footer hint */}
       <div style={{ padding: '16px 20px', marginTop: 'auto' }}>
-        <p style={{ fontSize: 10, color: DIMMER, lineHeight: 1.7, margin: 0, fontFamily: 'monospace' }}>
+        <p style={{ fontFamily: MONO, fontSize: 10.1, letterSpacing: '0.01em', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
           Scale formula: size = base × ratio^n<br />
           n = 0 is the base step <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#22c55e', verticalAlign: 'middle' }} />
         </p>
