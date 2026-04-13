@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import pluginScreenshot from '../assets/plugin-screenshot.png';
 
 // ── Constants ─────────────────────────────────────────────────────────────────
-const FIGMA_URL = 'https://www.figma.com/community';
+const FIGMA_URL = 'https://www.figma.com/community/plugin/1623665614609337483/type-scale-generator';
 const LEMONSQUEEZY_URL = '#';
 
 const ACCENT = 'linear-gradient(135deg, #7B6EE8, #9B3B6E)';   // filled buttons & dots
