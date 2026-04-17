@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router';
+import { Analytics } from '@vercel/analytics/react';
 import { Settings, DEFAULT_SETTINGS } from './utils/scale';
 import { ControlPanel } from './components/ControlPanel';
 import { SpecimenView } from './components/SpecimenView';
@@ -85,6 +86,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/app" element={<TypeScaleApp />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
